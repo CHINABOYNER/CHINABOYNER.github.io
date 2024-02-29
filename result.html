@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fetched Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fetched Data</h1>
+  <div class="container">
+    <button id="goBackButton">Go Back</button>
+    <div id="dataContainer"></div>
+  </div>
+
+  <script>
+    document.getElementById('goBackButton').addEventListener('click', function() {
+      window.history.back();
+    });
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const id = queryParams.get('id');
+    const token = queryParams.get('token');
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("id", id);
+    urlencoded.append("token", token);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    };
+
+    fetch("http://139.9.188.179:2023/getscore", requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        document.getElementById('dataContainer').innerHTML = result;
+      })
+      .catch(error => console.log('error', error));
+  </script>
+</body>
+</html>

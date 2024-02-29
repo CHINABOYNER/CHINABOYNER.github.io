@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Fetcher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Data Fetcher</h1>
+  <div class="container">
+    <label for="idInput">ID:</label>
+    <input type="text" id="idInput" />
+    <label for="tokenInput">Token:</label>
+    <input type="text" id="tokenInput" />
+    <button id="fetchButton">Fetch Data</button>
+  </div>
+
+  <script>
+    document.getElementById('fetchButton').addEventListener('click', function() {
+      var id = document.getElementById('idInput').value;
+      var token = document.getElementById('tokenInput').value;
+      window.location.href = `result.html?id=${id}&token=${token}`;
+    });
+  </script>
+</body>
+</html>
