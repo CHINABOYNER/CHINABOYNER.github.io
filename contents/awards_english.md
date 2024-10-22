@@ -1,1 +1,9 @@
-
+- **2023**: Third Prize in the 11th Hubei Provence University Student Mathematics Competition
+- **2023**: Third Prize in the Hubei Provincial Level of the Chinese Collegiate Computing Competition - Team Programming Ladder Tournament
+- **2023**: Third Prize in the National Finals of the 14th Lanqiao Cup Software and IT Professional Talent Competition (C/C++)
+- **2023**: Third Prize in the National Finals of the RAICOM Programming Skills Challenge
+- **2023**: National-level project approved and completed in the "College Students' Innovation and Entrepreneurship Training Program"
+- **2024**: Second Prize in the National Finals of the RAICOM Programming Skills Challenge
+- **2024**: Third Prize in the National Finals of the 15th Lanqiao Cup Software and IT Professional Talent Competition (C/C++)
+- **2024**: Third Prize in the National Finals of the Chinese Collegiate Computing Competition - Team Programming Ladder Tournament
+- **2024**: Second Prize in the Hubei Provincial Level of the 14th National College Student Market Research and Analysis Competition organized by the China Commercial Statistics Association
