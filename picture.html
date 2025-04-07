@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <title>个人奖状和证书展示</title>
+    <style>
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* 关闭按钮样式 */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <header class="bg-blue-500 text-white text-center py-8">
+        <h1 class="text-4xl font-bold">个人奖状和证书展示</h1>
+    </header>
+    <main class="container mx-auto p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="certificate-container">
+    </main>
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>&copy; 个人证书展示</p>
+    </footer>
+    <!-- 模态框 -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+    <script>
+        // 图片名数组，你可以将这里替换为实际的图片名
+        const imageNames = [
+            "picture/2024RAICOM——国二.png",
+            "picture/2024团体程序设计天梯赛——国三.png",
+            "picture/2024年ACM-ICPC选拔赛二等奖.jpg",
+            "picture/2024社会实践先进个人.jpg",
+            "picture/2023RAICOM——国三.png",
+            "picture/2023年科技创新标兵.jpg",
+            "picture/2023—2024优秀学生奖学金.jpg",
+            "picture/2023—2024国家励志奖学金.jpg",
+            "picture/2023—2024社会实践奖学金.jpg",
+            "picture/第十五届蓝桥杯——国三.png",
+            "picture/第十五届蓝桥杯——省一.png",
+            "picture/第十四届正大杯——省二.png",
+            "picture/第十四届蓝桥杯——国三.png",
+            "picture/第十四届蓝桥杯——省一.png",
+            "picture/第十一届湖北省大学生数学竞赛——三等奖.jpg",
+            "picture/2022-2023校级共青团员.jpg",
+            "picture/2022—2023优秀学生一等奖学金.png",
+            "picture/2022—2023国家励志奖学金.png",
+            "picture/2022—2023社会实践奖学金.png",
+            "picture/大创结项证书——国家级.png",
+            "picture/晚签小助手管理端v1.0.png"
+        ];
+        // 证书名称数组
+        const certificateNames = [
+            "2024RAICOM——国二",
+            "2024团体程序设计天梯赛——国三",
+            "2024年ACM-ICPC选拔赛二等奖",
+            "2024社会实践先进个人",
+            "2023RAICOM——国三",
+            "2023年科技创新标兵",
+            "2023—2024优秀学生奖学金",
+            "2023—2024国家励志奖学金",
+            "2023—2024社会实践奖学金",
+            "第十五届蓝桥杯——国三",
+            "第十五届蓝桥杯——省一",
+            "第十四届正大杯——省二",
+            "第十四届蓝桥杯——国三",
+            "第十四届蓝桥杯——省一",
+            "第十一届湖北省大学生数学竞赛——三等奖",
+            "2022-2023校级共青团员",
+            "2022—2023优秀学生一等奖学金",
+            "2022—2023国家励志奖学金",
+            "2022—2023社会实践奖学金",
+            "大创结项证书——国家级",
+            "软著——晚签小助手管理端v1.0"
+        ];
+
+        // 证书描述数组
+        const certificateDescriptions = [];
+
+        const container = document.getElementById('certificate-container');
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("img01");
+        const closeBtn = document.getElementsByClassName("close")[0];
+
+        imageNames.forEach((imageUrl, index) => {
+            const card = document.createElement('div');
+            card.classList.add('bg-white', 'rounded-lg', 'shadow-md', 'overflow-hidden', 'group');
+
+            const imageContainer = document.createElement('div');
+            imageContainer.classList.add('relative', 'h-64', 'overflow-hidden');
+
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = certificateNames[index];
+            img.classList.add('w-full', 'h-full', 'object-cover', 'object-center', 'group-hover:scale-105', 'transition-transform', 'duration-300', 'cursor-pointer');
+
+            // 为图片添加点击事件
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            };
+
+            imageContainer.appendChild(img);
+            card.appendChild(imageContainer);
+
+            const cardContent = document.createElement('div');
+            cardContent.classList.add('p-4');
+
+            const title = document.createElement('h2');
+            title.classList.add('text-xl', 'font-bold');
+            title.textContent = certificateNames[index];
+
+            const description = document.createElement('p');
+            description.classList.add('text-gray-600');
+            description.textContent = certificateDescriptions[index];
+
+            cardContent.appendChild(title);
+            cardContent.appendChild(description);
+            card.appendChild(cardContent);
+
+            container.appendChild(card);
+        });
+
+        // 关闭模态框
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>
+    
