@@ -10,9 +10,6 @@ jsongliang@163.com
 
 
 #### Education
-
-2025-2028, Soochow University, Software Engineering, Master Degree
-
 2021-2025, South-Central Minzu University, Computer Science , Bachelor's Degree
 
 #### Research Interests
